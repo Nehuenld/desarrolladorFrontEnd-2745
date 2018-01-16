@@ -211,16 +211,16 @@
 
 // const student = new User('Pepe')
 
-function showMessage (name) {
-  this.name = name
-  function pepe () {
-    console.log('Soy la primera', this.name)
-  }
-  setTimeout(() => {
-    console.log('Soy la segunda', this.name)
-  }, 1000)
+// function showMessage (name) {
+//   this.name = name
+//   function pepe () {
+//     console.log('Soy la primera', this.name)
+//   }
+//   setTimeout(() => {
+//     console.log('Soy la segunda', this.name)
+//   }, 1000)
 
-  pepe()
-}
+//   pepe()
+// }
 
-showMessage('Pedro')
+// showMessage('Pedro')

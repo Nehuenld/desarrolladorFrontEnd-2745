@@ -8,4 +8,4 @@
 
 - Una función publica que permita agregar teléfonos al usuario.
 
-- Una función publica que permita mostrar todas las propiedades del usuario en consola, mostrando los campos `firstName`, `lastName` y `telephones` en el mismo String.
+- Una función publica que permita mostrar todas las propiedades del usuario en consola, mostrando los campos `firstName`, `age` y `telephones` en el mismo String.
