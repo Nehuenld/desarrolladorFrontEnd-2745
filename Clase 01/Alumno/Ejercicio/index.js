@@ -13,9 +13,14 @@ function User(firstName, age, isAdmin, telephones[]) {
     }
     console.log(`Hola ${firstName}, tienes ${age} y tu telefono es ${telephones}`)
   }
-  
+  this.showsIsAdmin = function () {
+    console.log(isAdmin)
+  }
 }
 
-let client = new User('coco', 178, false,[1, 5, 6, 8, 9, 3, 5, 7, 2,4] )
+const client = new User('coco', 178, false,[1, 5, 6, 8, 9, 3, 5, 7, 2,4] )
+client.addPhone({number: 112244563})
 
-client.addPhone = (1, 5, 6, 8, 9, 3, 5, 7, 2)
+console.log(client.firstName)
+
+client.show()
