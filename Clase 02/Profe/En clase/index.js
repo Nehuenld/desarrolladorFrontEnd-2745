@@ -216,3 +216,19 @@
 // const message = user2.isAdmin ? `${user2.name} sos administrador` : `${user2.name} NO sos administrador`
 
 // console.log(message)
+
+// '+5491177338844'
+
+// set phone(phone){
+//   if(phone.indexOf('+549')!==-1){
+//     this._telephones.push({
+//       number:phone,
+//       isMobile: true
+//     })
+//   }else{
+//     this._telephones.push({
+//       number:phone,
+//       isMobile: false
+//     })
+//   }
+// }
