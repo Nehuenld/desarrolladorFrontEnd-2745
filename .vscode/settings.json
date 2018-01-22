@@ -9,7 +9,7 @@
   "prettier.jsonEnable": [],
   "prettier.useTabs": false,
   "prettier.tabWidth": 2,
-  "prettier.printWidth": 120,
+  "prettier.printWidth": 80,
 
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
