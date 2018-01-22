@@ -1,4 +1,4 @@
-1. Crear una clase llamada `Movie` con las siguientes características:
+# Crear una clase llamada `Movie` con las siguientes características:
 
 - Debe tener las siguientes propiedades, que deben ser recibidas al momento de crear el elemento: 
   * `title` String (Titulo de la película)

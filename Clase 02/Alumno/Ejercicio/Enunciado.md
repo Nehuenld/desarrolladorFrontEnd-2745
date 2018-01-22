@@ -1,4 +1,4 @@
-1. Crear una clase llamada `User` con las siguientes características:
+# Crear una clase llamada `User` con las siguientes características:
 
 - Debe tener las siguientes propiedades, que deben ser recibidas al momento de crear el elemento: 
   * `firstName` String

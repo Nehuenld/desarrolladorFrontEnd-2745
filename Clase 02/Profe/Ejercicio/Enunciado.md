@@ -1,4 +1,4 @@
-1. Crear una clase llamada `User` con las siguientes características:
+# Crear una clase llamada `User` con las siguientes características:
 
 - Debe tener las siguientes propiedades, que deben ser recibidas al momento de crear el elemento: 
   * `firstName` String
@@ -11,7 +11,7 @@
 
 - Una función que devuelva toda la información del usuario en un String `firstName`, `lastName`, `dni` y `telephones` con los telefonos separados por ` / ` usando reduce.
 
-2. Crear un array de objetos `User` usando la función map y el siguiente array:
+# Crear un array de objetos `User` usando la función map y el siguiente array:
 
 ```js
 var studentsList = [
