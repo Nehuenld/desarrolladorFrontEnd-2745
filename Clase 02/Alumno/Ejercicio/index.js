@@ -46,19 +46,53 @@ class User {
 // let integrado = User[].reduce( function() {
 //     return : `nombre ${_firstName}, apellido ${lastName}, dni ${_dni}, telefono ${phone}`;
 //   });
-return `nombre ${this._firstName},
- apellido ${this._lastName}, dni ${this._dni},
-  telefono ${this._telephones[phone]}`;
+
  
-  var element = [
+  let uno = new User [
   this._firstName = "Pedro",
   this._lastName = "Dietrich",
-  this._dni : 58987229,
-  this._telephones : [1,2,4,7,8,9,0,8,6]
+  this._dni = 58987229,
+  {_telephones = [1,2,4,7,8,9,0,8,6]}
 
   ];
-  var result = element.reduce(User)
+  let result = uno.reduce(User)
 
   console.log(result)
 
 }
+// 2. Crear un array de objetos `User` usando la función map y el siguiente array:
+
+
+var studentsList = [
+  {
+    firstName: 'Mercedes',
+    lastName: 'Baylac',
+    dni: 54353353,
+    telephones: [ { number: +54912345678, isMobile: true }, { number: +54987654321, isMobile: true } ]
+  },
+  {
+    firstName: 'Julian',
+    lastName: 'Bonpland',
+    dni: 54533343,
+    telephones: [ { number: +5478987865, isMobile: false }, { number: +54987654321, isMobile: true } ]
+  },
+  { firstName: 'Nehuen', lastName: 'Diaz', dni: 54353512 },
+  { firstName: 'Ramiro Avalos', lastName: 'Avalos', dni: 54533843 },
+  {
+    firstName: 'Barbara',
+    lastName: 'Pavan',
+    dni: 54357512,
+    telephones: [ { number: +54936473829, isMobile: true } ]
+  }
+]
+function mapStudents(studentsList) {
+  let newStudent = [{}]
+  for (let i = 0; i < studentsList.length; i++) {
+    const students = studentsList[i];
+    newStudent.push(`Alumno ${studentsList}`)
+  }
+  return newStudent 
+}
+
+const User = mapStudents(studentsList)
+
