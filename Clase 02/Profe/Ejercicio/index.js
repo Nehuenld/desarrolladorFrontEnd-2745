@@ -15,9 +15,16 @@ class User {
     })
   }
 
+  // showAll () {
+  //   return `Mi nombre es ${this._firstName || ''} ${this._lastName || ''}, mi DNI es ${this
+  //     ._dni} y mis números de teléfono son ${this._telephones.map((item) => item.number).join(' / ')}`
+  // }
+
   showAll () {
     return `Mi nombre es ${this._firstName || ''} ${this._lastName || ''}, mi DNI es ${this
-      ._dni} y mis números de teléfono son ${this._telephones.map((item) => item.number).join(' / ')}`
+      ._dni} y mis números de teléfono son ${this._telephones.reduce(function (ant, act) {
+      return `${ant.number || ant} / ${act.number}`
+    })}`
   }
 
   get telephones () {
@@ -27,14 +34,14 @@ class User {
 
 const user = new User('Adrián', 'Ferré', 34180352, true, [ { number: '+5491177227733', isMobile: true } ])
 
-console.log(user.showAll())
+// console.log(user.showAll())
 
-user.phone = '+54911616363'
+// user.phone = '+54911616363'
 
-user.phone = '+5477887788'
+// user.phone = '+5477887788'
 
-console.log(user.showAll())
-console.log(JSON.stringify(user.telephones, null, 2))
+// console.log(user.showAll())
+// console.log(JSON.stringify(user.telephones, null, 2))
 
 // Resolver en clase la segunda parte
 // Crear un array de objetos User usando la función map y el siguiente array:
@@ -61,3 +68,9 @@ var studentsList = [
     telephones: [ { number: '+54936473829', isMobile: true } ]
   }
 ]
+
+const newStudentsList = studentsList.map(
+  (item) => new User(item.firstName, item.lastName, item.dni, item.isAdmin, item.telephones)
+)
+
+console.log(newStudentsList[0].showAll())
