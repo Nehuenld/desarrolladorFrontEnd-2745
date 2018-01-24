@@ -5,7 +5,15 @@ class Movie {
     this._director = director
     this._actors = actors = []
   }
-  showName() {
-    console.log(`titulo ${this._title}`)
-  }
 }
+let pelicula = [
+  _title = 'The Hangover',
+  _year = 2009,
+  _director = 'Todd Phillips',
+  _actors = [
+    { firstName: 'Bradley', LastName: 'Cooper' },
+    { firstName: 'Ed', LastName: 'Helms' },
+    { firstName: 'Zach', LastName: 'Galifianakis' },
+    { firstName: 'Justin', LastName: 'Bartha' }
+  ]
+]

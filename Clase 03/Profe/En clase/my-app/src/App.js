@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Header from './Header'
 import Paragraph from './Paragraph'
 import './App.css'
+import Pokemon from './Pokemon'
 
 const ajaxInfo = {
   title: 'Clase 03',
@@ -11,9 +12,9 @@ const ajaxInfo = {
 }
 
 class App extends Component {
-  render () {
+  render() {
     return (
-      <div className='App'>
+      <div className="App">
         {ajaxInfo.title ? (
           <Header title={ajaxInfo.title} subtitle={ajaxInfo.subtitle} />
         ) : null}
