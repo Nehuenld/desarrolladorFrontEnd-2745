@@ -1,12 +1,12 @@
-# Mostrar en pantalla un listado de Pokemones
+# Mostrar en pantalla un listado de Pokemons
 
-- Crear el componente Pokemon similar al de la clase anterior, pero que muestre los parámetros `name` y `id`. El componente tiene que ser Dumb Component.
+- Crear el componente Pokemon similar al de la clase anterior pero que muestre los parámetros `name` y `id`, el componente tiene que ser Dumb Component.
 
-- Crea un componente PokemonList para mostrar una lista de Pokemones, usando el Array `pokemonList`, tiene que ser un Smart Component.
+- Crea un componente PokemonList para mostrar una lista de Pokemons usando el Array `pokemonList`, el componente tiene que ser un Smart Component.
 
-- Crear un botón que permita ocultar o mostrar la lista de Pokemones, el mensaje del botón tiene que alternar entre 'Mostrar' y 'Ocultar' según corresponda.
+- Crear un botón que permita ocultar o mostrar la lista de Pokemons, el mensaje del botón tiene que alternar entre 'Mostrar' y 'Ocultar' según corresponda.
 
-[Ejemplo](https://www.useloom.com/share/b31b22b4b451403b89e07dffd014e85b)
+[Video ejemplo](https://www.useloom.com/share/b31b22b4b451403b89e07dffd014e85b)
 
 ```js
 const pokemonList = [

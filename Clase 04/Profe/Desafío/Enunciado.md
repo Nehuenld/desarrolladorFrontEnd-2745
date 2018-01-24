@@ -1,14 +1,14 @@
-# Mostrar en pantalla un listado de Pokemones
+# Mostrar en pantalla un listado de Pokemons
 
-- Crear el componente Pokemon similar al de la clase anterior, pero que muestre los parámetros `name` y `id`. El componente tiene que ser Dumb Component.
+- Crear el componente Pokemon similar al de la clase anterior pero que muestre los parámetros `name` y `id`, el componente tiene que ser Dumb Component.
 
-- Crea un componente PokemonList para mostrar una lista de Pokemones, usando el Array `pokemonList`, tiene que ser un Smart Component.
+- Crea un componente PokemonList para mostrar una lista de Pokemons usando el Array `pokemonList`, el componente tiene que ser un Smart Component.
 
-- Crear un botón que permita ocultar o mostrar la lista de Pokemones, el mensaje del botón tiene que alternar entre 'Mostrar' y 'Ocultar' según corresponda.
+- Crear un botón que permita ocultar o mostrar la lista de Pokemons, el mensaje del botón tiene que alternar entre 'Mostrar' y 'Ocultar' según corresponda.
 
-- Agregar un `input` que permita escribir y buscar un Pokemon ingresando el nombre, al encontrarlo mostrar solo ese elemento en la lista. La búsqueda es por palabra exacta usando el método `find` de JavaScript, pero sin distinguir entre mayúsculas y minúsculas (usar `toUpperCase` en la comparación). Si el input esta vacío mostrar toda la lista, si el usuario ingreso algo mostrar el resultado.
+- Agregar un `input` que permita escribir y buscar un Pokemon ingresando el nombre, al encontrarlo mostrar solo ese elemento en la lista, si no lo encuentra mostrar el mensaje '# Sin Resultados'. La búsqueda es por palabra exacta usando el método `find` de JavaScript, pero sin distinguir entre mayúsculas y minúsculas (usar `toUpperCase` en la comparación). Si el `input` esta vacío mostrar toda la lista, si el usuario ingreso algo mostrar el resultado.
 
-[Ejemplo](https://www.useloom.com/share/d60992b8840841cea684fcf69b8495fd)
+[Video ejemplo](https://www.useloom.com/share/553d1360f52442c7bee1f3f27ef1857e)
 
 ```js
 const pokemonList = [
