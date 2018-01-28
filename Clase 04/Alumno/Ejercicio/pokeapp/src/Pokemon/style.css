@@ -1,0 +1,22 @@
+.poke {
+  box-sizing: border-box;
+  text-align: left;
+  font-weight: bold;
+}
+input {
+  margin: 20px 0 0 22px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+button {
+  margin: 15px 0 15px 66px;
+  background: white;
+  border-radius: 7px;
+  border: 1px solid #ced4da;
+  transition: backgroun-color 0.1s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+ul {
+  list-style: none;
+  text-transform: capitalize;
+  margin: 0px;
+}

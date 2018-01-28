@@ -30,12 +30,12 @@ var studentsList = [
     firstName: 'Barbara',
     lastName: 'Pavan',
     dni: 54357512,
-    telephones: [ { number: +54936473829, isMobile: true } ]
+    telephones: [{ number: +54936473829, isMobile: true }]
   }
 ]
 
 class Header extends Component {
-  constructor (props) {
+  constructor(props) {
     super()
 
     this.state = {
@@ -52,13 +52,13 @@ class Header extends Component {
     })
   }
 
-  handleChangeInput = (event) => {
+  handleChangeInput = event => {
     this.setState({
       value: event.target.value
     })
   }
 
-  render () {
+  render() {
     const { showImage, value } = this.state
 
     const image = showImage ? <Image /> : null
@@ -66,9 +66,9 @@ class Header extends Component {
     // console.log(studentsList.find((student) => student.firstName === value))
 
     const header = (
-      <header className='App-header' onClick={this.handlerToggle}>
+      <header onClick={this.handlerToggle}>
         {image}
-        {studentsList.map((student) => (
+        {studentsList.map(student => (
           <Student
             key={student.dni}
             firstName={student.firstName}

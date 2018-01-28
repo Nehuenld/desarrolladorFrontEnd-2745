@@ -24,7 +24,7 @@ class App extends Component {
           name={ajaxInfo.name}
           height={ajaxInfo.height}
           weight={ajaxInfo.weight}
-          url={ajaxInfo.url}
+          url={ajaxInfo.url1}
         />
       </div>
     )
