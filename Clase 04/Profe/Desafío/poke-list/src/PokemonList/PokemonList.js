@@ -44,7 +44,7 @@ class PokemonList extends Component {
     ))
 
     const searchedPokemon = pokemonList.find(
-      (pokemon) => !!pokemon.name.includes(searchText)
+      (pokemon) => pokemon.name === searchText
     )
 
     return (
