@@ -93,7 +93,7 @@ class PokemonList extends Component {
 
     this.state = {
       showPokemon: true,
-      value: ''
+      value: ""
     }
   }
 
@@ -120,7 +120,9 @@ class PokemonList extends Component {
         ))
       : null
 
-    pokemonList.find(pokemon => pokemon.name === value)
+    const resultPokemon = pokemonList.find(
+      pokemon => pokemon.name.includes(value)
+    )
 
     const div = (
       <div class="poke">
@@ -130,7 +132,15 @@ class PokemonList extends Component {
         <button onClick={this.handlerToggle} onChange={this.handleChangeToggle}>
           {showPokemon ? 'Ocultar' : 'Mostrar'}
         </button>
-        {pokemon}
+        <ul>
+          {!value ? (
+            pokemon
+          ) : resultPokemon ? (
+            <Pokemon id={resultPokemon.id} name={resultPokemon.name} />
+          ) : (
+            '#Sin Resultados'
+          )}
+        </ul>
       </div>
     )
 
