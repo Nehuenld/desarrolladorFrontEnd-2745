@@ -26,4 +26,5 @@
    * componentWillUnmount
 
 [Pokémon API](https://pokeapi.co/)
+
 [Ciclo de vida del componente](http://busypeoples.github.io/post/react-component-lifecycle/)
