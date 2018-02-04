@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+
+import PokemonList from './PokemonList'
 
 import { request } from './utils'
 
@@ -8,7 +8,8 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      pokemonList: []
+      pokemonList: [],
+      selectedPokemon: null
     }
   }
 
@@ -19,10 +20,9 @@ class App extends Component {
   fetchPokemonPage = (url) => {
     request(url, 'GET')
       .then((response) => {
-        console.log('Lo que devuelve la API', response)
         this.appendPokemons(response.results)
         if (response.next) {
-          this.fetchPokemonPage(response.next)
+          // this.fetchPokemonPage(response.next)
         }
       })
       .catch((error) => console.log('Error', error))
@@ -35,17 +35,26 @@ class App extends Component {
     })
   }
 
+  handleSelectPokemon = (selectedPokemonUrl) => {
+    request(selectedPokemonUrl, 'GET')
+      .then((response) => {
+        this.setState({
+          selectedPokemon: response
+        })
+      })
+      .catch((error) => console.log('Error', error))
+  }
+
   render () {
-    console.log(this.state.pokemonList)
+    const { pokemonList, selectedPokemon } = this.state
+
     return (
-      <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>Welcome to React</h1>
-        </header>
-        <p className='App-intro'>
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <PokemonList
+          pokemonList={pokemonList}
+          selectedPokemon={selectedPokemon}
+          onSelectPokemon={this.handleSelectPokemon}
+        />
       </div>
     )
   }
