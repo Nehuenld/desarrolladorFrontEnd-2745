@@ -12,16 +12,16 @@ styles.rootChoosen = {
 }
 
 class Pokemon extends Component {
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { name, isChoosen } = this.props
     const { isChoosen: nextIsChoosen } = nextProps
 
     if (!isChoosen && nextIsChoosen) {
-      // console.log('Eligieron a mi pokémon ', name)
+      console.log('Eligieron a mi pokémon ', name)
     }
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     const { name, isChoosen } = this.props
     const { isChoosen: nextIsChoosen } = nextProps
 
@@ -32,13 +32,13 @@ class Pokemon extends Component {
     return false
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     console.log('Me fuí de la pantalla', this.props.name)
   }
 
-  render () {
+  render() {
     const { isChoosen, name, onClickPokemon } = this.props
-    // console.log('Mi poke', name)
+    console.log('Mi poke', name)
     return (
       <h1
         style={isChoosen ? styles.rootChoosen : styles.root}

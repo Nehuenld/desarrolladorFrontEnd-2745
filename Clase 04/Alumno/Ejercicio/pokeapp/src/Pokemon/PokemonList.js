@@ -120,10 +120,6 @@ class PokemonList extends Component {
         ))
       : null
 
-    const resultPokemon = pokemonList.find(
-      pokemon => pokemon.name.includes(value)
-    )
-
     const div = (
       <div class="poke">
         <form>
