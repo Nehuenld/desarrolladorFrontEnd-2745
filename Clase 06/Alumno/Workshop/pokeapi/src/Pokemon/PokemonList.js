@@ -1,130 +1,86 @@
 import React, { Component } from 'react'
-
-import { request } from './utils'
-
 import Pokemon from './Pokemon'
-
+import Detalles from './Detalles'
 import './style.css'
 
 const styles = {
-  message: {
-    background: 'red',
-    display: 'inline-block'
+  root: {
+    boxSizing: 'borderBox',
+    display: 'flex',
+    fontWeight: 'bold',
+    marginTop: 20
+  },
+  input: {
+    marginLeft: 22
+  },
+  firstColumn: {
+    width: 300,
+    display: 'flex-column',
+    textAlign: 'left'
   }
-}
-styles.description = {
-  display: 'inline-block'
-}
-styles.container = {
-  display: 'flex'
 }
 
 class PokemonList extends Component {
-  constructor(props) {
+  constructor() {
     super()
-
     this.state = {
-      showPokemon: true,
-      value: '',
-      pokemonList: [],
-      message: 'Buscando datos...',
-      pointPokemon: []
+      value: ''
     }
   }
 
-  componentWillMount() {
-    const { pointPokemon } = this.state
-    this.setState({
-      pointPokemon: ['bulbasaur']
-    })
-
-    this.fetchPokemos(`https://pokeapi.co/api/v2/pokemon`)
-  }
-
-  fetchPokemos = url => {
-    request(url, 'GET')
-      .then(response => {
-        this.appendPokemons(response.results)
-        // if (response.next) {}
-        // this.fetchPokemos(response.next)
-
-        this.setState({
-          message: null
-        })
-      })
-      .catch(error => console.log('Error', error))
-  }
-
-  // handlerToggle = () => {
-  //   const { showPokemon } = this.state
-
-  //   this.setState({
-  //     showPokemon: !showPokemon
-  //   })
-  // }
-
-  handleChangeInput = event => {
+  handleInputChange = event => {
     this.setState({
       value: event.target.value
     })
   }
 
-  componentDidMount() {
-    const { pointPokemon } = this.state
-
-    // console.log('Ya se monto', choosenPokemon)
-  }
-
-  appendPokemons = results => {
-    const { pokemonList } = this.state
-    this.setState({
-      pokemonList: pokemonList.concat(results),
-      message: null
-    })
-  }
-
-  clickPokemon = name => {
-    const { pointPokemon } = this.state
-
-    const newPointPokemon = pointPokemon.slice()
-
-    newPointPokemon.push(name)
-
-    this.setState({
-      pointPokemon: newPointPokemon
-    })
-  }
-  hideList = () => {
-    this.setState({
-      showPokemon: false
-    })
-  }
-
   render() {
-    const {
-      showPokemon,
-      value,
-      pokemonList,
-      message,
-      clickPokemon
-    } = this.state
+    const { pokemonList, selectedPokemon, onSelectPokemon } = this.props
+    const { value } = this.state
 
+    const filteredPokemonList = pokemonList.filter(pokemon =>
+      pokemon.name.includes(value.toLowerCase())
+    )
+    console.log(selectedPokemon)
     return (
-      <div>
-        {message}
-        {showList
-          ? pokemonList.map(
-              poke =>
-                pointPokemon.indexOf(poke.name) === -1 ? (
+      <div style={styles.root}>
+        <div style={styles.firstColumn}>
+          <input style={styles.input} onChange={this.handleInputChange} />
+          <ul>
+            {value
+              ? filteredPokemonList.map(pokemon => (
                   <Pokemon
-                    key={poke.name}
-                    name={poke.name}
-                    isPoint={pointPokemon.indexOf(poke.name) !== -1}
-                    onPointPokemon={this.clickPokemon}
+                    key={pokemon.url.split('/')[6]}
+                    id={pokemon.url.split('/')[6]}
+                    name={pokemon.name}
+                    url={pokemon.url}
+                    onSelectPokemon={onSelectPokemon}
                   />
-                ) : null
-            )
-          : null}
+                ))
+              : pokemonList.map(pokemon => (
+                  <Pokemon
+                    key={pokemon.url.split('/')[6]}
+                    id={pokemon.url.split('/')[6]}
+                    name={pokemon.name}
+                    url={pokemon.url}
+                    onSelectPokemon={onSelectPokemon}
+                  />
+                ))}
+          </ul>
+        </div>
+        <div>
+          Detalle del Pokemon
+          {selectedPokemon ? (
+            <Detalles
+              key={selectedPokemon}
+              id={selectedPokemon.id}
+              name={selectedPokemon.name}
+              weight={selectedPokemon.weight}
+              height={selectedPokemon.height}
+              sprites={selectedPokemon.sprites}
+            />
+          ) : null}
+        </div>
       </div>
     )
   }

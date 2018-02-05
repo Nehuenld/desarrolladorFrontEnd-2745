@@ -1,49 +1,20 @@
 import React from 'react'
 
 const styles = {
-  detail: {
+  li: {
+    textTransform: 'capitalize',
+    fontSize: 16,
     cursor: 'pointer'
   }
 }
 
-styles.detailPoint = {
-  ...styles.detail,
-  backgroundColor: 'red'
+function Pokemon({ id, name, url, onSelectPokemon }) {
+  return (
+    <li
+      style={styles.li}
+      onClick={() => onSelectPokemon(url)}
+    >{`# ${id} ${name}`}</li>
+  )
 }
 
-class Pokemon extends Component {
-  comoponentWillReceiveProps(nextProps) {
-    const { name, isPoint } = this.props
-    const { isPoint: nextIsPoint } = nextProps
-
-    if (!isPoint && nextIsPoint) {
-    }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    const { name, isPoint } = this.props
-    const { isPoint: nextIsPoint } = nextProps
-
-    if (!isPoint && nextIsPoint) {
-      return true
-    }
-    return false
-  }
-
-  componentWillUnmount() {
-    console.log('Me fui de la pantalla', this.props.name)
-  }
-
-  render() {
-    const { isPoint, name, onPointPokemon } = this.props
-
-    return (
-      <h1
-        style={isPoint ? styles.detailPoint : styles.detail}
-        onClick={() => onPointPokemon(name)}
-      >
-        {name}
-      </h1>
-    )
-  }
-}
+export default Pokemon
