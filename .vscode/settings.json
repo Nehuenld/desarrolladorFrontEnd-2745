@@ -17,5 +17,6 @@
 
   // Disable editor lint, use standard lint
   "javascript.validate.enable": false,
-  "languageTool.language": "es"
+  "languageTool.language": "es",
+  "git.ignoreLimitWarning": true
 }
