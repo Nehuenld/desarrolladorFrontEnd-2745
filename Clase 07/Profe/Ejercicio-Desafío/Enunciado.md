@@ -1,0 +1,1 @@
+# Implementar redux en nuestro proyecto principal, ya se el de Pokemon o el de StarWars
