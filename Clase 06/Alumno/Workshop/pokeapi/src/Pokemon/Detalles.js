@@ -3,10 +3,11 @@ import React from 'react'
 const styles = {
   li: {
     textTransform: 'capitalize',
-    fontSize: 24
+    fontSize: 24,
+    color: red
   },
   img: {
-    width: 150
+    width: 200
   }
 }
 
