@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import PeopleList from './PeopleList'
 import PeopleDetail from './PeopleDetail'
+import { connect } from 'react-redux'
+
+import {
+  fetchPeopleStart,
+  fetchPeopleSuccess,
+  fetchDetailStart,
+  fetchDetailSuccess
+} from './actions'
 
 import { request } from './utils'
 
@@ -26,14 +34,17 @@ class PeoplePage extends Component {
   }
 
   getPeople (url) {
-    const { fetchPeopleSucces, fetchPeople } = this.props
+    const {
+      fetchPeopleSucces,
+      fetchPeople,
+      fetchPeopleStart,
+      fetchPeopleSuccess
+    } = this.props
+
+    fetchPeopleStart()
+
     request(url, 'GET').then((response) => {
-      this.addPeople(response.results)
-      if (response.next) {
-        this.getPeople(response.next)
-      } else {
-        this.setState({ searching: false })
-      }
+      fetchPeopleSuccess(response)
     })
   }
 
@@ -51,13 +62,17 @@ class PeoplePage extends Component {
   }
 
   handleSelectPeople = (url) => {
+    const { fetchDetailStart, fetchDetailSuccess } = this.props
+    fetchDetailStart()
     request(url, 'GET').then((response) => {
-      this.setState({ selectedPeople: response })
+      fetchDetailSuccess(response)
     })
   }
 
   render () {
-    const { peopleList, searching, inputValue, selectedPeople } = this.state
+    const { isSearching, peopleList, peopleDetail } = this.props
+
+    const { inputValue } = this.state
 
     const filteredList = peopleList.filter((people) =>
       people.name.toLowerCase().includes(inputValue.toLowerCase())
@@ -66,7 +81,7 @@ class PeoplePage extends Component {
     return (
       <div style={styles.root}>
         <div>
-          {searching ? 'Buscando...' : null}
+          {isSearching ? 'Buscando...' : null}
           <div>
             <input onChange={this.handleChange} />
           </div>
@@ -76,11 +91,11 @@ class PeoplePage extends Component {
           />
         </div>
         <div>
-          {selectedPeople ? (
+          {peopleDetail ? (
             <PeopleDetail
-              name={selectedPeople.name}
-              eyeColor={selectedPeople['eye_color']}
-              height={selectedPeople.height}
+              name={peopleDetail.name}
+              eyeColor={peopleDetail['eye_color']}
+              height={peopleDetail.height}
             />
           ) : null}
         </div>
@@ -88,4 +103,26 @@ class PeoplePage extends Component {
     )
   }
 }
-export default PeoplePage
+
+const mapStateToProps = (state) => {
+  const {
+    peoplePage: { isSearching, peopleList = [], peopleDetail = null }
+  } = state
+
+  return {
+    isSearching,
+    peopleList,
+    peopleDetail
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPeopleStart: () => dispatch(fetchPeopleStart()),
+    fetchPeopleSuccess: (response) => dispatch(fetchPeopleSuccess(response)),
+    fetchDetailStart: () => dispatch(fetchDetailStart()),
+    fetchDetailSuccess: (response) => dispatch(fetchDetailSuccess(response))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PeoplePage)
