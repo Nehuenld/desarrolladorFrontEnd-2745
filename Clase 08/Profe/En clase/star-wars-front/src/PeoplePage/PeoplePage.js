@@ -105,7 +105,9 @@ class PeoplePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { peoplePage: { isSearching, peopleList, peopleDetail = null } } = state
+  const {
+    peoplePage: { isSearching, peopleList = [], peopleDetail = null }
+  } = state
 
   return {
     isSearching,
