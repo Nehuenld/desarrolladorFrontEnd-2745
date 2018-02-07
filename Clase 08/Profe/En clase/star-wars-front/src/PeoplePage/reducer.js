@@ -2,8 +2,7 @@ import * as ActionTypes from './actions'
 
 const initialState = {
   isSearching: false,
-  isSearchingDetail: false,
-  peopleList: []
+  isSearchingDetail: false
 }
 
 export default function reducer (state = initialState, action) {
