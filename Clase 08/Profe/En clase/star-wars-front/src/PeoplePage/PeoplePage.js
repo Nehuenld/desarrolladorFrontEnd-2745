@@ -3,12 +3,7 @@ import PeopleList from './PeopleList'
 import PeopleDetail from './PeopleDetail'
 import { connect } from 'react-redux'
 
-import {
-  fetchPeopleStart,
-  fetchPeopleSuccess,
-  fetchDetailStart,
-  fetchDetailSuccess
-} from './actions'
+import { fetchPeople, fetchDetail } from './actions'
 
 import { request } from './utils'
 
@@ -19,40 +14,18 @@ const styles = {
 }
 
 class PeoplePage extends Component {
+
+
   constructor () {
     super()
     this.state = {
-      peopleList: [],
-      searching: true,
-      inputValue: '',
-      selectedPeople: null
+      inputValue: ''
     }
   }
 
   componentWillMount () {
-    this.getPeople('https://swapi.co/api/people/')
-  }
-
-  getPeople (url) {
-    const {
-      fetchPeopleSucces,
-      fetchPeople,
-      fetchPeopleStart,
-      fetchPeopleSuccess
-    } = this.props
-
-    fetchPeopleStart()
-
-    request(url, 'GET').then((response) => {
-      fetchPeopleSuccess(response)
-    })
-  }
-
-  addPeople (people) {
-    const { peopleList } = this.state
-    this.setState({
-      peopleList: peopleList.concat(people)
-    })
+    const { fetchPeople } = this.props
+    fetchPeople()
   }
 
   handleChange = (event) => {
@@ -61,16 +34,8 @@ class PeoplePage extends Component {
     })
   }
 
-  handleSelectPeople = (url) => {
-    const { fetchDetailStart, fetchDetailSuccess } = this.props
-    fetchDetailStart()
-    request(url, 'GET').then((response) => {
-      fetchDetailSuccess(response)
-    })
-  }
-
   render () {
-    const { isSearching, peopleList, peopleDetail } = this.props
+    const { isSearching, peopleList, peopleDetail, fetchDetail } = this.props
 
     const { inputValue } = this.state
 
@@ -85,10 +50,7 @@ class PeoplePage extends Component {
           <div>
             <input onChange={this.handleChange} />
           </div>
-          <PeopleList
-            peopleList={filteredList}
-            onSelectPeople={this.handleSelectPeople}
-          />
+          <PeopleList peopleList={filteredList} onSelectPeople={fetchDetail} />
         </div>
         <div>
           {peopleDetail ? (
@@ -116,13 +78,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchPeopleStart: () => dispatch(fetchPeopleStart()),
-    fetchPeopleSuccess: (response) => dispatch(fetchPeopleSuccess(response)),
-    fetchDetailStart: () => dispatch(fetchDetailStart()),
-    fetchDetailSuccess: (response) => dispatch(fetchDetailSuccess(response))
-  }
+const mapDispatchToProps = {
+  fetchPeople,
+  fetchDetail
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PeoplePage)
