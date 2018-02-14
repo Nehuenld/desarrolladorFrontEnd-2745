@@ -78,6 +78,10 @@
 
 // 6. Un breve repaso de objetos en JS
 
+var obj = {
+  firstName: 'Pepe'
+}
+
 // function User (firstName, age) {
 //   this.firstName = firstName
 //   var name = 'Pepito'
