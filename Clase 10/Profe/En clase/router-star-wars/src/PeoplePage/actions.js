@@ -6,10 +6,9 @@ export const FETCH_DETAIL_SEARCHING = 'FETCH_DETAIL_SEARCHING'
 export const FETCH_DETAIL_SEARCHED = 'FETCH_DETAIL_SEARCHED'
 
 export const fetchPeople = () => {
-  return (dispatch, getState, { api, request, pato }) => {
+  return (dispatch, getState, { api, request }) => {
     dispatch({
-      type: FETCH_PEOPLE_SEARCHING,
-      text: 'Build my first Redux app'
+      type: FETCH_PEOPLE_SEARCHING
     })
     request(`${api}/people`, 'GET')
       .then((response) =>

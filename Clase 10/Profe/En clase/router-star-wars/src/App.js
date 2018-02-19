@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { Provider } from 'react-redux'
 
-import PeoplePage from './PeoplePage'
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
+
+import Layout from './Layout'
 
 import store from './store'
 
@@ -11,9 +12,11 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <MuiThemeProvider muiTheme={getMuiTheme({ fontFamily: 'Arial' })}>
-          <PeoplePage />
-        </MuiThemeProvider>
+        <BrowserRouter>
+          <MuiThemeProvider>
+            <Route component={Layout} />
+          </MuiThemeProvider>
+        </BrowserRouter>
       </Provider>
     )
   }
