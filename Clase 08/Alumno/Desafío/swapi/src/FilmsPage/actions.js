@@ -13,14 +13,23 @@ export const fetchFilms = () => {
       type: FETCH_FILMS_SEARCHING,
       text: 'Ir a nadar a la piscina'
     })
-    request(`${api}/films/`, 'GET').then(response =>
-      dispatch({
-        type: FETCH_FILMS_SEARCHED,
-        payload: {
-          results: response.results
-        }
-      })
-    )
+    request(`${api}/films/`, 'GET')
+      .then(response =>
+        dispatch({
+          type: FETCH_FILMS_SEARCHED,
+          payload: {
+            results: response.results
+          }
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: FETCH_FILMS_FAILED,
+          payload: {
+            error: error
+          }
+        })
+      )
   }
 }
 

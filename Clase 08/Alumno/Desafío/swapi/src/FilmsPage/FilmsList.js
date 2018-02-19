@@ -2,18 +2,20 @@ import React from 'react'
 
 import FilmsItem from './FilmsItem'
 
-function FilmsList({ filmsList, onselectFilms }) {
+import Menu from 'material-ui/Menu'
+
+function FilmsList({ filmsList, onSelectFilms }) {
   return (
-    <ul>
+    <Menu>
       {filmsList.map(films => (
         <FilmsItem
           key={films.url}
           title={films.title}
           url={films.url}
-          onselectFilms={onselectFilms}
+          onSelectFilms={onSelectFilms}
         />
       ))}
-    </ul>
+    </Menu>
   )
 }
 

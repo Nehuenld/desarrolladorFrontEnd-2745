@@ -18,7 +18,7 @@ export default function reducer(state = baseState, action) {
       return {
         ...state,
         isSearching: false,
-        filmsList: payload.resuslts
+        filmsList: payload.results
       }
 
     case ActionTypes.FETCH_DETAIL_SEARCHING:

@@ -1,16 +1,20 @@
 import React from 'react'
+import { MenuItem } from 'material-ui'
 
 const styles = {
   root: {
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: 'white'
   }
 }
 
-function FilmsItem({ title, url, onselecFilms }) {
+function FilmsItem({ title, url, onSelectFilms }) {
   return (
-    <li style={styles.root} onClick={() => onselecFilms(url)}>
-      {title}
-    </li>
+    <MenuItem
+      style={styles.root}
+      onClick={() => onSelectFilms(url)}
+      primaryText={title}
+    />
   )
 }
 

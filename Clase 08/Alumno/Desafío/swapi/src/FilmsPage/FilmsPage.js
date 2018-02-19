@@ -5,11 +5,20 @@ import { connect } from 'react-redux'
 
 import { fetchFilms, fetchDetail } from './actions'
 
-import { request } from './utils'
+import { CircularProgress, Paper, TextField } from 'material-ui'
 
 const styles = {
   root: {
     display: 'flex'
+  },
+  detail: {
+    padding: '0 15px',
+    backgroundImage: 'url("https://i.ytimg.com/vi/6MPJGaBHoOM/hqdefault.jpg")',
+    color: 'white'
+  },
+  dark: {
+    background: 'black',
+    color: 'white'
   }
 }
 
@@ -43,14 +52,22 @@ class FilmsPage extends Component {
 
     return (
       <div style={styles.root}>
-        <div>
-          {isSearching ? 'Cargando Datos...' : null}
+        <Paper style={styles.dark} zDepth={2}>
           <div>
-            <input onChange={this.handleChange} />
+            {isSearching ? <CircularProgress size={60} thickness={7} /> : null}
+
+            <div>
+              <TextField
+                value={inputValue}
+                hintText="Busca la pelicula"
+                onChange={this.handleChange}
+                floatingLabelText="Pelicula"
+              />
+            </div>
+            <FilmsList filmsList={filteredList} onSelectFilms={fetchDetail} />
           </div>
-          <FilmsList filmsList={filteredList} onSelectPeople={fetchDetail} />
-        </div>
-        <div>
+        </Paper>
+        <div style={styles.detail}>
           {filmsDetail ? (
             <FilmsDetail
               title={filmsDetail.title}
