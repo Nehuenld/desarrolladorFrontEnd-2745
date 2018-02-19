@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { ListItem } from 'material-ui/List'
+
 const styles = {
   root: {
     cursor: 'pointer'
@@ -8,9 +10,11 @@ const styles = {
 
 function PeopleItem ({ name, url, onSelectPeople }) {
   return (
-    <li style={styles.root} onClick={() => onSelectPeople(url)}>
-      {name}
-    </li>
+    <ListItem
+      style={styles.root}
+      onClick={() => onSelectPeople(url)}
+      primaryText={name}
+    />
   )
 }
 
