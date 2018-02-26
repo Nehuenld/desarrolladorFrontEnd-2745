@@ -1,17 +1,20 @@
 import React from 'react'
-import { MenuItem } from 'material-ui/MenuItem'
+import { ListItem } from 'material-ui/List'
 
-const styles = {
+import FaceIcon from 'material-ui/svg-icons/action/face'
+
+const styles = isOdd => ({
   root: {
     cursor: 'pointer',
-    color: 'white'
+    color: isOdd ? 'red' : 'blue'
   }
-}
+})
 
-function FilmsItem({ title, url, onSelectFilms }) {
+function FilmsItem({ title, url, isOdd, onSelectFilms }) {
   return (
-    <MenuItem
-      style={styles.root}
+    <ListItem
+      leftIcon={<FaceIcon color={isOdd ? 'red' : 'blue'} />}
+      style={styles(isOdd).root}
       onClick={() => onSelectFilms(url)}
       primaryText={title}
     />

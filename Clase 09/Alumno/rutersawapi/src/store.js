@@ -5,12 +5,12 @@ import { request } from './utils'
 
 const api = 'https://swapi.co/api'
 
-// const extraArguments = { api, request }
+const extraArguments = { api, request }
 
 let store = createStore(
   starWars,
   compose(
-    applyMiddleware(thunk.withExtraArgument(api)),
+    applyMiddleware(thunk.withExtraArgument(extraArguments)),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )

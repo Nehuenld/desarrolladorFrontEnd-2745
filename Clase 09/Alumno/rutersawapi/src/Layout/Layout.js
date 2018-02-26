@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import PlanetPage from '../PlanetPage'
+import PlanetPage from '../PlanetsPage'
 
 import FilmsPage from '../FilmsPage'
 
@@ -21,11 +21,11 @@ class Layout extends Component {
           <Tab label="Films" onActive={() => this.handleSelectRoute('films')} />
           <Tab
             label="Planetas"
-            onActive={() => this.handleSelectRoute('planet')}
+            onActive={() => this.handleSelectRoute('planets')}
           />
         </Tabs>
         <Route exact path="/" component={FilmsPage} />
-        <Route exact path="/planet" component={PlanetPage} />
+        <Route exact path="/planets" component={PlanetPage} />
         <Route exact path="/films" component={FilmsPage} />
       </div>
     )

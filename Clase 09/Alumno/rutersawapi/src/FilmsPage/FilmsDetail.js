@@ -1,22 +1,13 @@
 import React from 'react'
 
-const styles = {
-  h1: {
-    textTransform: 'uppercase',
-    color: 'withe',
-    textAling: 'center'
-  },
-  details: {
-    backgroound: 'transparent'
-  }
-}
+import { Card, CardTitle, CardText } from 'material-ui/Card'
+
 function FilmsDetail({ title, director, opening_crawl }) {
   return (
-    <div style={styles.details}>
-      <h1 style={styles.h1}>{title}</h1>
-      <h3>{`Director: ${director}`}</h3>
-      <p>{`Descripción:${opening_crawl}`}</p>
-    </div>
+    <Card>
+      <CardTitle title={title} />
+      <CardText>{`director ${director}`}</CardText>
+    </Card>
   )
 }
 

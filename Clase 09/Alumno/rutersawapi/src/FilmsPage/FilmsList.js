@@ -1,21 +1,30 @@
 import React from 'react'
 
+import { List } from 'material-ui/List'
+
+import './filmsList.css'
+
 import FilmsItem from './FilmsItem'
 
-import Menu from 'material-ui/Menu'
+const styles = {
+  root: {
+    padding: 0
+  }
+}
 
 function FilmsList({ filmsList, onSelectFilms }) {
   return (
-    <Menu>
-      {filmsList.map(films => (
+    <List style={styles.root}>
+      {filmsList.map((films, index) => (
         <FilmsItem
           key={films.url}
           title={films.title}
           url={films.url}
+          isOdd={index % 2}
           onSelectFilms={onSelectFilms}
         />
       ))}
-    </Menu>
+    </List>
   )
 }
 

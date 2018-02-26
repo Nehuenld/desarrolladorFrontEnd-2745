@@ -7,20 +7,20 @@ import { connect } from 'react-redux'
 import StarshipsTable from './StarshipsTable'
 
 class StarshipsPage extends Component {
-  componentWillMount () {
+  componentWillMount() {
     const { fetchStarships } = this.props
 
     fetchStarships()
   }
 
-  render () {
+  render() {
     const { starshipsList } = this.props
 
     return <StarshipsTable starshipsList={starshipsList} />
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { starshipsPage: { isSearching, starshipsList = [] } } = state
 
   return {

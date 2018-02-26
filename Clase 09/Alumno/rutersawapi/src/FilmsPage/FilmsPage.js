@@ -3,11 +3,9 @@ import FilmsList from './FilmsList'
 import FilmsDetail from './FilmsDetail'
 import { connect } from 'react-redux'
 
-import { request } from './utils'
+import { TextField, Paper, LinearProgress } from 'material-ui'
 
 import { fetchFilms, fetchDetail } from './actions'
-
-import { CircularProgress, Paper, TextField } from 'material-ui/'
 
 const styles = {
   root: {
@@ -15,12 +13,7 @@ const styles = {
   },
   detail: {
     padding: '0 15px',
-    backgroundImage: 'url("https://i.ytimg.com/vi/6MPJGaBHoOM/hqdefault.jpg")',
-    color: 'white'
-  },
-  dark: {
-    background: 'black',
-    color: 'white'
+    flex: '1'
   }
 }
 
@@ -44,7 +37,13 @@ class FilmsPage extends Component {
   }
 
   render() {
-    const { isSearching, filmsList, filmsDetail, fetchDetail } = this.props
+    const {
+      isSearching,
+      isSearchingDetail,
+      filmsList,
+      filmsDetail,
+      fetchDetail
+    } = this.props
 
     const { inputValue } = this.state
 
@@ -53,11 +52,12 @@ class FilmsPage extends Component {
     )
 
     return (
-      <div style={styles.root}>
-        <Paper style={styles.dark} zDepth={2}>
-          <div>
-            {isSearching ? <CircularProgress size={60} thickness={7} /> : null}
-
+      <div>
+        {isSearching || isSearchingDetail ? (
+          <LinearProgress mode="indeterminate" color="green" />
+        ) : null}
+        <div style={styles.root}>
+          <Paper>
             <div>
               <TextField
                 value={inputValue}
@@ -67,16 +67,16 @@ class FilmsPage extends Component {
               />
             </div>
             <FilmsList filmsList={filteredList} onSelectFilms={fetchDetail} />
+          </Paper>
+          <div style={styles.detail}>
+            {filmsDetail ? (
+              <FilmsDetail
+                title={filmsDetail.title}
+                director={filmsDetail.director}
+                opening_crawl={filmsDetail.opening_crawl}
+              />
+            ) : null}
           </div>
-        </Paper>
-        <div style={styles.detail}>
-          {filmsDetail ? (
-            <FilmsDetail
-              title={filmsDetail.title}
-              director={filmsDetail.director}
-              opening_crawl={filmsDetail.opening_crawl}
-            />
-          ) : null}
         </div>
       </div>
     )
@@ -85,11 +85,17 @@ class FilmsPage extends Component {
 
 const mapStateToProps = state => {
   const {
-    FilmsPage: { isSearching, filmsList = [], filmsDetail = null }
+    filmsPage: {
+      isSearching,
+      isSearchingDetail,
+      filmsList = [],
+      filmsDetail = null
+    }
   } = state
 
   return {
     isSearching,
+    isSearchingDetail,
     filmsList,
     filmsDetail
   }

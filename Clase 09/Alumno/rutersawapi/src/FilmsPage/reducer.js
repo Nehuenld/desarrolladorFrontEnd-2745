@@ -1,11 +1,11 @@
 import * as ActionTypes from './actions'
 
-const baseState = {
+const initialState = {
   isSearching: false,
   isSearchingDetail: false
 }
 
-export default function reducer(state = baseState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.FETCH_FILMS_SEARCHING:
       return {

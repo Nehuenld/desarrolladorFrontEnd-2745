@@ -6,7 +6,7 @@ export const FETCH_DETAIL_SEARCHING = 'FETCH_DETAIL_SEARCHING'
 export const FETCH_DETAIL_SEARCHED = 'FETCH_DETAIL_SEARCHED'
 
 export const fetchFilms = () => {
-  return (dispatch, getState, api, request) => {
+  return (dispatch, getState, { api, request }) => {
     dispatch({
       type: FETCH_FILMS_SEARCHING
     })
@@ -31,7 +31,7 @@ export const fetchFilms = () => {
 }
 
 export const fetchDetail = url => {
-  return (dispatch, getState, api, request) => {
+  return (dispatch, getState, { api, request }) => {
     dispatch({
       type: FETCH_DETAIL_SEARCHING
     })

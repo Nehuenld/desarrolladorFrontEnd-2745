@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import FilmsPage from './FilmsPage/reducer'
-import PlanetPage from './PlanetPage/reducer'
+import filmsPage from './FilmsPage/reducer'
+import planetsPage from './PlanetsPage/reducer'
 
 const starWars = combineReducers({
-  FilmsPage,
-  PlanetPage
+  filmsPage,
+  planetsPage
 })
 
 export default starWars
